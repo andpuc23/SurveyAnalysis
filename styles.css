@@ -3,5 +3,24 @@ button{
  	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: 20pt;
+	font-size: 30pt;
+
+
+}
+
+
+
+#logopic{
+	position: relative;
+	top: 20px;
+	left: 50%;
+}
+
+#download{
+	margin: 50px;
+
+}
+
+b{
+	font-family: "Courier New";
 }
