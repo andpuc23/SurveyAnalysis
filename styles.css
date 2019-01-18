@@ -11,6 +11,7 @@ button{
 
 
 #logopic{
+    align-content: center;
 	position: relative;
 	top: 20px;
 	left: 50%;
@@ -18,9 +19,12 @@ button{
 
 #download{
 	margin: 50px;
-
 }
 
 b{
 	font-family: "Courier New";
+}
+
+#usage_helper_list{
+    text-align: center;
 }
