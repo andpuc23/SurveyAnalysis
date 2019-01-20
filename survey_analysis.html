@@ -8,6 +8,7 @@
 	<style>
 		body{
 			font-family: "Comic Sans MS";
+			background-color: #FF8372;
 		}
 	</style>
 
@@ -20,34 +21,55 @@
 	<img src="prelogo.png" alt="here will be the logo"
 	width="80%" align="center">
 </div>
-<div class="list" id="usage_helper_list">
-	<a>использовать этот сервис очень просто:</a>
-	<ol>
-		<li>загрузи таблицу в формате <b>.xls</b> или <b>.spss</b> </li>
-		<li>выбери дополнительные параметры</li>
-		<li>получи результат</li>
-	</ol>
+<div id="advices">
+	<h3>использовать этот сервис очень просто:</h3>
+		<div id="first_advice">
+			<a>1. загрузи таблицу в формате <b>.xls</b> или <b>.spss</b> </a>
+		</div>
+		<div id="second_advice">
+			<a>2. выбери дополнительные параметры</a>
+		</div>
+		<div id="third_advice">
+			<a>3. получи результат</a>
+		</div>
 </div>
-<div>
-	<a></a>
+<div id="upload_button">
 	<input type="file" id="fileUploader" value="upload a file"
-		   onclick="upload()" accept="*/xls|*/spss">
+		   onclick="upload()" accept="*/xls">
 </div>
 
-<div> <!--parameters list -->
+<h3>дополнительные настройки</h3>
+<div>
 	<ul class="list">
-		<li>grouping questions</li>
-		<li>grouping people by answers</li>
-		<li>adding special terms</li>
-		<li>choosing important questions</li>
-		<li>choosing important answers</li>
+		<li>группировка вопросов:
+			<ul>
+				<li>по выбору пользователя</li>
+				<li>поля текстового ввода для номеров вопросов</li>
+			</ul>
+		</li>
+		<li>группировка респондентов по ответам
+			<ul>
+				<li> 1121 выбор параметров и терминов (текст на № вопроса + на название группы)</li>
+				<li> 1122 группировка по самым популярным ответам</li>
+				<li>выбор критерия максимальной популярности</li>
+				<li> самые популярные
+					<input type="range" name="проценты"
+						   min="1" max="75" value="5">
+					процентов
+				</li>
+				<li>11232 самые популярные n ответов (range)</li>
+				<li>11231 на конкретный вопрос</li>
+			</ul>
+		</li>
+		<li>1124 выбор самых (не)популярных ответов (range)</li>
+		<li>1125 выбор важных вопросов и ответов</li>
 	</ul>
 </div>
 
 
 <div>
-	<input type="button" value="perform analysis" onclick="sendFile()">
-	this may take a while
+	<input type="button" value="произвести анализ" onclick="sendFile()">
+	(может занять некоторое время)
 </div>
 
 
