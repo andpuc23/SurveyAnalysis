@@ -2,81 +2,95 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Survey Analysis</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	<script type="text/javascript" src="Actions.js"></script>
-	<style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript" src="Actions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <style>
 		body{
 			font-family: "Comic Sans MS";
-			background-color: #FF8372;
 		}
 	</style>
 
 </head>
-
-
 <body>
+<div id="page">
+    <div class="header"> <!--logo picture & description-->
+    	<img src="prelogo.png" alt="here will be the logo"
+    	width="80%" align="center">
+    </div>
+    <div id="advices">
+    	<h3>использовать этот сервис очень просто:</h3>
+    		<div id="first_advice" class="advice_text">
+    			<a>1. загрузи таблицу в формате <b class="code">.xls</b> или
+                    <b class="code">.spss</b> </a>
+    		</div>
+    		<div id="second_advice" class="advice_text">
+    			<a>2. выбери дополнительные параметры</a>
+    		</div>
+    		<div id="third_advice" class="advice_text">
+    			<a>3. получи результат</a>
+    		</div>
 
-<div id="header"> <!--logo picture & description-->
-	<img src="prelogo.png" alt="here will be the logo"
-	width="80%" align="center">
+    </div>
+    <div id="upload_button">
+    	<input type="file" id="fileUploader" value="upload a file"
+    		   onclick="upload()" accept="*/xls">
+    </div>
+
+    <h3 class="header">дополнительные настройки</h3>
+    <div>
+    	<ul class="list">
+    		<li>группировка вопросов:
+    			<ul>
+    				<li>выбор конкретных вопросов: </li>
+    				<input type="text" id="concrete_Q" onchange="addCQ()" value="1, 2, 5, 10">
+    			</ul>
+    		</li>
+    		<li>группировка респондентов по ответам
+    			<ul>
+    				<li> 1121 выбор параметров и терминов: <br>
+    					<input type="text" id="namedQs" onchange="setgroup()"> номера вопросов
+    					<br><input type="text" id="names" oninput="setName()"> обозначение группы
+    				</li>
+    				<li> 1122 группировка по самым популярным ответам</li>
+    				<li> самые популярные
+    					<input type="range" id="perc_selector"
+    						   min="1" max="75" value="5" onchange="showPercValue()">
+    					<a id="perc_val">5</a> %
+    				</li>
+    				<li>11232 самые популярные ответы
+    					<input type="range" id="mostPopularA" min="5" max="20"
+                               value="5" onchange="showAnsValue()">
+    					(<a id="AnsVal">5</a> шт.)
+    				</li>
+    				<li>11231 на конкретный вопрос:
+						<input type="text" value="2" id="repsByConcreteAnswer" oninput="addRespsByQuest()">
+						<br><a class="code">введите номер вопроса, по ответу на который сгруппируются респонденты</a></li>
+    			</ul>
+    		</li>
+    		<li>1124 выбор самых (не)популярных ответов </li>
+    		<li>1125 выбор важных вопросов и ответов</li>
+    	</ul>
+    </div>
+
+
+    <div>
+    	<input type="button" value="произвести анализ" onclick="sendFile()">
+    	(может занять некоторое время)
+    </div>
+
+
+    <div id="download">
+    	the download link will appear here
+    </div>
 </div>
-<div id="advices">
-	<h3>использовать этот сервис очень просто:</h3>
-		<div id="first_advice">
-			<a>1. загрузи таблицу в формате <b>.xls</b> или <b>.spss</b> </a>
-		</div>
-		<div id="second_advice">
-			<a>2. выбери дополнительные параметры</a>
-		</div>
-		<div id="third_advice">
-			<a>3. получи результат</a>
-		</div>
-</div>
-<div id="upload_button">
-	<input type="file" id="fileUploader" value="upload a file"
-		   onclick="upload()" accept="*/xls">
-</div>
-
-<h3>дополнительные настройки</h3>
-<div>
-	<ul class="list">
-		<li>группировка вопросов:
-			<ul>
-				<li>по выбору пользователя</li>
-				<li>поля текстового ввода для номеров вопросов</li>
-			</ul>
-		</li>
-		<li>группировка респондентов по ответам
-			<ul>
-				<li> 1121 выбор параметров и терминов (текст на № вопроса + на название группы)</li>
-				<li> 1122 группировка по самым популярным ответам</li>
-				<li>выбор критерия максимальной популярности</li>
-				<li> самые популярные
-					<input type="range" name="проценты"
-						   min="1" max="75" value="5">
-					процентов
-				</li>
-				<li>11232 самые популярные n ответов (range)</li>
-				<li>11231 на конкретный вопрос</li>
-			</ul>
-		</li>
-		<li>1124 выбор самых (не)популярных ответов (range)</li>
-		<li>1125 выбор важных вопросов и ответов</li>
-	</ul>
-</div>
-
-
-<div>
-	<input type="button" value="произвести анализ" onclick="sendFile()">
-	(может занять некоторое время)
-</div>
-
-
-<div id="download">
-	the download link will appear here
-</div>
-
 
 </body>
 </html>

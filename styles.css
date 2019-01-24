@@ -6,34 +6,46 @@ button{
 	font-size: 30pt;
 }
 
-#header{
+#page{
+	width: 800px;
+	margin: auto;
+	background-color: #FF8372;
+
+}
+
+.header{
     align-content: center;
+	text-align: center;
 	position: relative;
-	top: 20px;
+	border-top: 20px;
+	border-bottom: 20px;
 }
 
 #download{
 	margin: 50px;
 }
 
-b{
+.code{
 	font-family: "Courier New";
 }
 
 #advices{
 	margin: 30px;
 	font-size: 20px;
+	text-align: center;
+}
+
+.advice_text{
+	font-size: 15pt;
 }
 #first_advice{
     text-align: left;
 }
 #second_advice{
 	text-align: center;
-	padding-right: 60px;
 }
 #third_advice{
 	text-align: right;
-	padding-right: 120px;
 }
 
 #upload_button{
