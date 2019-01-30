@@ -5,15 +5,6 @@ function upload(){
     file = fileInput.files[0];
 }
 
-function uploadRaw() {
-    upload();
-        raw = true;
-}
-
-function uploadPrep() {
-    upload();
-    raw = false;
-}
 
 function showPercValue(){
     var percents = document.getElementById("perc_val");
@@ -28,7 +19,7 @@ function showAnsValue(){
 }
 
 function checkFile(sender) {
-    var validExts = new Array(".xlsx", ".xls", ".spss");
+    var validExts = ['.xlsx', '.xls', '.spss'];
     var fileExt = sender.value;
     fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
     if (validExts.indexOf(fileExt) < 0) {
@@ -40,23 +31,22 @@ function checkFile(sender) {
 }
 
 function addCQ() {
-    //добавление элементов в двумерный массив
+    //добавление элементов
 }
 
+function sendFiles() {
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function setRaw(value){
+    raw = value;
+    var radio;
+    if(value){
+        radio = document.getElementById("prepared_yes");
+        radio.checked = false;
+    }
+    else{
+        radio = document.getElementById("prepared_no");
+        radio.checked = false;
+    }
+}

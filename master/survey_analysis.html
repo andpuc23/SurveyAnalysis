@@ -12,54 +12,141 @@
 	<script type="text/javascript" src="Actions.js"></script>
 	<script type="text/javascript" src="Bootstrap/js"></script>
 
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div id="page">
     <div class="header">
-    	<img id="logo" src="../carrier.jpg" alt="here will be the logo"
+    	<img id="logo" src="images/carrier.jpg" alt="here will be the logo"
 			 width="100%" align="center">
     </div>
     <div id="advices">
     	<h3>использовать этот сервис очень просто:</h3>
-    		<div id="first_advice" class="advice_text">
-    			<a>1. загрузи таблицу в формате <a class="code">.xls(x)</a> или
-                    <a class="code">.spss</a> </a>
-    		</div>
-    		<div id="second_advice" class="advice_text">
-    			<a>2. выбери дополнительные параметры</a>
-    		</div>
-    		<div id="third_advice" class="advice_text">
-    			<a>3. получи результат</a>
-    		</div>
-
-    </div>
-    <div id="upload_button">
-    	<!--
-		<input type="button" class="btn btn-secondary btn-lg" id="rawUploader" value="загрузить несведенную таблицу" onclick="uploadRaw()">
--->
-
-		<button type="button" class="btn btn-primary">Primary</button>
-		<button type="button" class="btn btn-secondary">Secondary</button>
-		<button type="button" class="btn btn-success">Success</button>
-		<button type="button" class="btn btn-danger">Danger</button>
-		<button type="button" class="btn btn-warning">Warning</button>
-		<button type="button" class="btn btn-info">Info</button>
-		<button type="button" class="btn btn-light">Light</button>
-		<button type="button" class="btn btn-dark">Dark</button>
-
-		<button type="button" class="btn btn-link">Link</button>
-
+		<div id="first_advice" class="advice_text">
+			<a>1. загрузи таблицу в формате <a class="code">.xls(x)</a> или
+				<a class="code">.spss</a> </a>
+		</div>
+		<div id="second_advice" class="advice_text">
+			<a>2. выбери дополнительные параметры</a>
+		</div>
+		<div id="third_advice" class="advice_text">
+			<a>3. получи результат</a>
+		</div>
     </div>
 
+
+	<div class="spacer"></div>
+
+
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span type="button" class="btn btn-outline-secondary"
+				  id="UploadButton" onchange="checkFile(this)" onclick="upload()">Загрузить</span>
+		</div>
+		<div class="custom-file">
+			<input type="file" class="custom-file-input btn" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" lang="ru">
+			<label class="custom-file-label" for="inputGroupFile01">Выберите файл для анализа</label>
+		</div>
+
+
+		<div class="spacer"></div>
+
+
+		<div id="tableHolder">
+		<table class="table-borderless">
+			<thead>
+			<tr>
+			<td colspan="2">я загрузил</td>
+			</tr>
+			</thead>
+			<tr>
+				<td>
+					<input class="form-check-input" type="radio" name="prepared_yes"
+						   id="prepared_yes" value="what" checked onclick="setRaw(false)">
+					<label class="form-check-label" for="prepared_yes">
+						сведенную таблицу
+					</label>
+				</td>
+				<td>
+					<input class="form-check-input" type="radio" name="prepared_no"
+						   id="prepared_no" onclick="setRaw(true)">
+					<label class="form-check-label" for="prepared_no">
+						несведенную таблицу
+					</label>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">что такое сведенная и несведенная таблицы?</td>
+			</tr>
+			<tr>
+				<td><img class="screenshot" src="images/prep_table.png" alt="prepared table image"><br></td>
+
+				<td><img class="screenshot" src="images/raw_table.png" alt="unprepared table image"><br></td>
+			</tr>
+			<tr>
+				<td>Эта таблица - сведенная</td>
+				<td>А эта - нет</td>
+			</tr>
+		</table>
+		</div>
+	</div>
 
 	<!-- html form-->
-    <h3 class="header">дополнительные настройки</h3>
-    <div>
+    <h3>дополнительные настройки</h3>
+    <form action="results.php" method="get">
+		<h5>Группируем вопросы</h5>
+		<div>
+			<label for="concreteQuestionGroup">номера вопросов для формирования группы:</label>
+			<input type="text" class="form-control" id="concreteQuestionGroup" onchange="addCQ()"
+				   placeholder="1, 2, 5, 10">
+			<!--<input type="text" class="form-control" id="questions2" onchange="addCQ()"
+				   aria-describedby="formatHelp" placeholder="1, 2, 5, 10"> -->
+		</div>
+		<div class="h5"><h5>Группируем ответы</h5></div>
+		<div>
+			<label for="answers1">выбор вопросов и названия группы:</label>
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" id="answers1"
+				   		placeholder="2, 3, 4" aria-describedby="">
+					<small class="form-text text-muted">номера вопросов, формирующих группу</small>
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" id="answers1name" onchange="addGroup()"
+				   		placeholder="группа 1">
+					<small class="form-text text-muted">название группы</small>
+				</div>
+			</div>
+		</div>
+
+		<h5>Группируем респондентов</h5>
+		<div>
+			<label for="mostPopularA">по самым популярным ответам</label><br>
+			<input type="range" id="mostPopularA" min="1" max="20"
+				   value="5" onchange="showAnsValue()">
+			(<a id="AnsVal">5</a> шт.)
+		<br>
+			<input type="range" id="perc_selector"
+				   min="1" max="50" value="5" onchange="showPercValue()">
+			<a id="perc_val">5</a> %
+		</div>
+
+		<div>
+			<label for="concreteQuestion">по ответам на конкретный вопрос</label>
+			<input type="text" class="form-control" id="concreteQuestion" placeholder="3">
+		</div>
+
+		<input class="btn btn-primary" type="submit" value="done">
+	</form>
+
+	<div>
     	<ul class="list">
     		<li>группировка вопросов:
     			<ul>
     				<li>выбор конкретных вопросов: </li>
-    				<input type="text" id="concrete_Q" onchange="addCQ()" value="1, 2, 5, 10">
+    				<input type="text" id="cq" onchange="addCQ()" value="1, 2, 5, 10">
     			</ul>
     		</li>
     		<li>группировка респондентов по ответам
@@ -70,14 +157,14 @@
     				</li>
     				<li> 1122 группировка по самым популярным ответам</li>
     				<li> самые популярные
-    					<input type="range" id="perc_selector"
+    					<input type="range" id="perc_selector1"
     						   min="1" max="75" value="5" onchange="showPercValue()">
-    					<a id="perc_val">5</a> %
+    					<a id="perc_val1">5</a> %
     				</li>
     				<li>11232 самые популярные ответы
-    					<input type="range" id="mostPopularA" min="5" max="20"
+    					<input type="range" id="mostPopularA1" min="5" max="20"
                                value="5" onchange="showAnsValue()">
-    					(<a id="AnsVal">5</a> шт.)
+    					(<a id="AnsVal1">5</a> шт.)
     				</li>
     				<li>11231 на конкретный вопрос:
 						<input type="text" value="2" id="repsByConcreteAnswer" oninput="addRespsByQuest()">
