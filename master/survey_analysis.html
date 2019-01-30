@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Survey Analysis</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="Bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="Actions.js"></script>
+	<script type="text/javascript" src="Bootstrap/js"></script>
+
+</head>
+<body>
+<div id="page">
+    <div class="header">
+    	<img id="logo" src="../carrier.jpg" alt="here will be the logo"
+			 width="100%" align="center">
+    </div>
+    <div id="advices">
+    	<h3>использовать этот сервис очень просто:</h3>
+    		<div id="first_advice" class="advice_text">
+    			<a>1. загрузи таблицу в формате <a class="code">.xls(x)</a> или
+                    <a class="code">.spss</a> </a>
+    		</div>
+    		<div id="second_advice" class="advice_text">
+    			<a>2. выбери дополнительные параметры</a>
+    		</div>
+    		<div id="third_advice" class="advice_text">
+    			<a>3. получи результат</a>
+    		</div>
+
+    </div>
+    <div id="upload_button">
+    	<!--
+		<input type="button" class="btn btn-secondary btn-lg" id="rawUploader" value="загрузить несведенную таблицу" onclick="uploadRaw()">
+-->
+
+		<button type="button" class="btn btn-primary">Primary</button>
+		<button type="button" class="btn btn-secondary">Secondary</button>
+		<button type="button" class="btn btn-success">Success</button>
+		<button type="button" class="btn btn-danger">Danger</button>
+		<button type="button" class="btn btn-warning">Warning</button>
+		<button type="button" class="btn btn-info">Info</button>
+		<button type="button" class="btn btn-light">Light</button>
+		<button type="button" class="btn btn-dark">Dark</button>
+
+		<button type="button" class="btn btn-link">Link</button>
+
+    </div>
+
+
+	<!-- html form-->
+    <h3 class="header">дополнительные настройки</h3>
+    <div>
+    	<ul class="list">
+    		<li>группировка вопросов:
+    			<ul>
+    				<li>выбор конкретных вопросов: </li>
+    				<input type="text" id="concrete_Q" onchange="addCQ()" value="1, 2, 5, 10">
+    			</ul>
+    		</li>
+    		<li>группировка респондентов по ответам
+    			<ul>
+    				<li> 1121 выбор параметров и терминов: <br>
+    					<input type="text" id="namedQs" onchange="setgroup()"> номера вопросов
+    					<br><input type="text" id="names" oninput="setName()"> обозначение группы
+    				</li>
+    				<li> 1122 группировка по самым популярным ответам</li>
+    				<li> самые популярные
+    					<input type="range" id="perc_selector"
+    						   min="1" max="75" value="5" onchange="showPercValue()">
+    					<a id="perc_val">5</a> %
+    				</li>
+    				<li>11232 самые популярные ответы
+    					<input type="range" id="mostPopularA" min="5" max="20"
+                               value="5" onchange="showAnsValue()">
+    					(<a id="AnsVal">5</a> шт.)
+    				</li>
+    				<li>11231 на конкретный вопрос:
+						<input type="text" value="2" id="repsByConcreteAnswer" oninput="addRespsByQuest()">
+						<br><a class="code">введите номер вопроса, по ответу на который сгруппируются респонденты</a></li>
+    			</ul>
+    		</li>
+    		<li>1124 выбор самых (не)популярных ответов </li>
+    		<li>1125 выбор важных вопросов и ответов</li>
+    	</ul>
+    </div>
+
+
+    <div>
+    	<input type="button" value="произвести анализ" onclick="sendFile()">
+    	(может занять некоторое время)
+    </div>
+
+
+    <div id="download">
+    	the download link will appear here
+    </div>
+</div>
+
+</body>
+</html>
+
+

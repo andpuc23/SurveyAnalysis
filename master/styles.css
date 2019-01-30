@@ -1,0 +1,144 @@
+div{
+	border: #FFFF00 1px solid;
+}
+
+#page{
+	max-width: 750px;
+    width: 100%;
+	margin: auto;
+	background-color: #efefef;
+
+}
+
+#logo{
+	padding-left: 10%;
+	padding-right: 10%;
+	width: 80%;
+}
+
+.header{
+    align-content: center;
+	text-align: center;
+	position: relative;
+	border-top: 20px;
+	border-bottom: 20px;
+	border: #FFFF00 solid;
+}
+
+#download{
+	margin: 50px;
+}
+
+.code{
+	font-family: "Courier New";
+}
+
+#advices{
+	font-size: 20px;
+	text-align: center;
+}
+
+.advice_text{
+	font-size: 15pt;
+    font-family: "noto serif sc";
+}
+#first_advice{
+    text-align: left;
+}
+#second_advice{
+	text-align: center;
+}
+#third_advice{
+	text-align: right;
+}
+
+/*.button{
+	background-color: #0c5460;
+	border: #FF0000 2px solid;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	align-content: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: auto;
+}
+
+button:hover  {
+	background-color: #FFFFFF;
+	color:#000;
+}
+
+#upload_button{
+	align-content: center;
+	border: #FFFF00 3px solid;
+}
+*/
+#fileUploader{
+	font-size: 15pt;
+	font-family: "Courier New";
+}
+
+
+
+
+
+body{
+    background-color: #999;
+	-webkit-font-smoothing: antialiased;
+	-webkit-overflow-scrolling: touch;
+
+}
+
+.centered{
+	text-align: center;
+}
+
+
+hr{
+	display: block;
+	border: 0;
+	height: 1px;
+	border-top: 1px;
+	margin: 1em 0;
+	padding: 0;
+}
+
+.navbar{
+	font-weight: 800;
+	font-size: 14px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.navbar-inverse{
+	background: #2d2d2d;
+	border-color: #2d2d2d;
+}
+
+.navbar-inverse .navbar-nav > .active > a{
+	background-color: #ff7878;
+}
+
+.navbar-inverse .navbar-brand{
+	font-weight: bolder;
+	font-size: 22px;
+	color:#999;
+	letter-spacing: 1px;
+}
+
+#headerwrap h1{
+	margin-top: 100px;
+	color: white;
+	font-size: 70px;
+	font-weight: 300;
+	letter-spacing: 3px;
+}
+
+#headerwrap h2 {
+	color: white;
+	font-size: 40px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
